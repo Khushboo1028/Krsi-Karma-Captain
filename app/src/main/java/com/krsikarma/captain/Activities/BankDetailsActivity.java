@@ -166,7 +166,7 @@ public class BankDetailsActivity extends AppCompatActivity {
                     public void onSuccess(Void aVoid) {
                         progressBar.setVisibility(View.GONE);
 
-                        //TODO: THIS IS A FLAW
+
                         if(activity_from.equals("FromAddDocuments")) {
                             finishAffinity();
                             Intent intent = new Intent(getApplicationContext(), MainActivity.class);

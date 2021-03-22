@@ -339,9 +339,13 @@ public class EarningsActivity extends AppCompatActivity {
                             }
 
                             double_request_amount = total_earnings - double_amount_requested_till_now;
-                            // TODO CHECK FOR REQ AMOUNT CANNOT BE NEGATIVE ALSO REMOVE BUTTON IF AMOUNT IS 0
+                            if(double_request_amount == 0.0){
+                                btn_transfer.setEnabled(false);
+                            }
+
                             if (double_request_amount<0.0){
                                 double_request_amount=0.0;
+                                btn_transfer.setEnabled(false);
                             }
                             str_request_amount = String.valueOf(double_request_amount);
                             tv_amount_remaining.setText("₹ " + str_request_amount.substring(0, str_request_amount.length() - 2));
