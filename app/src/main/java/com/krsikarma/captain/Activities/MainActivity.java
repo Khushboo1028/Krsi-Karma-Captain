@@ -251,18 +251,13 @@ public class MainActivity extends AppCompatActivity {
                     } else {
                         //snapshot exists
                         //check if documents are added
-                        if (snapshot.getString(getString(R.string.aadhar_url)) == null) {
+                        if (snapshot.getString(getString(R.string.aadhar_url)) == null || snapshot.getString(getString(R.string.driving_license_url)) == null) {
                             finishAffinity();
                             Intent intent = new Intent(getApplicationContext(), AddDocumentsActivity.class);
                             intent.putExtra("activity_from", "FromCreateProfile");
                             startActivity(intent);
                         }
-                        if (snapshot.getString(getString(R.string.driving_license_url)) == null) {
-                            finishAffinity();
-                            Intent intent = new Intent(getApplicationContext(), AddDocumentsActivity.class);
-                            intent.putExtra("activity_from", "FromCreateProfile");
-                            startActivity(intent);
-                        } else if (snapshot.getString(getString(R.string.bank_full_name)) == null) {
+                        else if (snapshot.getString(getString(R.string.bank_full_name)) == null) {
                             finishAffinity();
                             Intent intent = new Intent(getApplicationContext(), BankDetailsActivity.class);
                             intent.putExtra("activity_from", "FromAddDocuments");
