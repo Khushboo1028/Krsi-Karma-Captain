@@ -119,7 +119,7 @@ public class CreateProfileActivity extends AppCompatActivity {
     String phone_number;
     String first_name;
     String last_name;
-    String address;
+    String address = "";
     String postalCode;
     Double address_latitude;
     Double address_longitude;
@@ -151,7 +151,7 @@ public class CreateProfileActivity extends AppCompatActivity {
                 first_name = utils.capitalizeString(et_first_name.getText().toString().trim());
                 last_name = utils.capitalizeString(et_last_name.getText().toString().trim());
 
-                if (!utils.isStringNull(first_name) && !utils.isStringNull(last_name) && !first_name.isEmpty() && !last_name.isEmpty() && selectedServiceTypeList != null && !selectedServiceTypeList.isEmpty()) {
+                if (!utils.isStringNull(first_name) && !utils.isStringNull(last_name) && !first_name.isEmpty() && !last_name.isEmpty() && selectedServiceTypeList != null && !selectedServiceTypeList.isEmpty() && !address.isEmpty() && address_latitude!=null && address_longitude!=null) {
                     progressBar.setVisibility(View.VISIBLE);
                     addData();
 
@@ -538,6 +538,7 @@ public class CreateProfileActivity extends AppCompatActivity {
                             progressBar.setVisibility(View.GONE);
                             finishAffinity();
                             Intent intent = new Intent(getApplicationContext(), AddDocumentsActivity.class);
+                            intent.putExtra("activity_from", "FromCreateProfile");
                             startActivity(intent);
                         }
                     })

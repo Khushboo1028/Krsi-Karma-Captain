@@ -158,6 +158,7 @@
     <string name="you_are_not_approved">You account is not yet verified by the admin. Please be patient.</string>
     <string name="no_requests_in_this_area">Looks like there are no requests in this area. Please try another address.</string>
 
+    <string name="cannot_request_zero">You have no amount to be requested</string>
     <!--    API KEYS-->
     <string name="PLACES_API_KEY" translatable="false">AIzaSyAl_W-16U6yJI1RLf0gZdDd_IHoXFNi6L0</string>
 

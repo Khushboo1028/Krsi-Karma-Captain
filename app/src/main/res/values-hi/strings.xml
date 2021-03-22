@@ -163,4 +163,5 @@
     <string name="you_are_not_approved">आप प्रोफ़ाइल को अभी तक व्यवस्थापक द्वारा सत्यापित नहीं किया गया है। कृपया धैर्य रखें।</string>
     <string name="no_requests_in_this_area"> लगता है कि इस क्षेत्र में कोई अनुरोध नहीं हैं। कृपया दूसरा पता आज़माएं। </string>
 
+    <string name="cannot_request_zero"> आपके पास अनुरोध की जाने वाली कोई राशि नहीं है </string>
 </resources>

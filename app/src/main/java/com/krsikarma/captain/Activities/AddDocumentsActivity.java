@@ -86,31 +86,39 @@ public class AddDocumentsActivity extends AppCompatActivity {
 
         getData();
 
-        if(activity_from.equals("FromCreateProfile")){
+        if (activity_from.equals("FromCreateProfile")) {
             btn_register.setText(getString(R.string.continue_text));
 
-        }else{
-            btn_register.setText(getString(R.string.done));
-        }
+            btn_register.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    if (btn_register.getText().equals(getString(R.string.continue_text))) {
+                        if (aadhar_url != null && !aadhar_url.isEmpty() && dl_url != null && !dl_url.isEmpty()) {
+                            finishAffinity();
+                            Intent intent = new Intent(getApplicationContext(), BankDetailsActivity.class);
+                            intent.putExtra("activity_from", "FromAddDocuments");
+                            startActivity(intent);
 
-        btn_register.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if(activity_from.equals("FromCreateProfile")) {
-                    if (aadhar_url != null && !aadhar_url.isEmpty() && dl_url != null && !dl_url.isEmpty()) {
-                        finishAffinity();
-                        Intent intent = new Intent(getApplicationContext(), BankDetailsActivity.class);
-                        intent.putExtra("activity_from", "FromAddDocuments");
-                        startActivity(intent);
-
-                    } else {
-                        utils.alertDialogOK(AddDocumentsActivity.this, getString(R.string.error_text), getString(R.string.fill_aadhar_dl));
+                        } else {
+                            utils.alertDialogOK(AddDocumentsActivity.this, getString(R.string.error_text), getString(R.string.fill_aadhar_dl));
+                        }
                     }
-                }else{
-                    finish();
+
                 }
+            });
+
+
+        } else {
+            btn_register.setText(getString(R.string.done));
+            if (btn_register.getText().equals(getString(R.string.done))) {
+                btn_register.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        onBackPressed();
+                    }
+                });
             }
-        });
+        }
 
 
     }
@@ -181,14 +189,11 @@ public class AddDocumentsActivity extends AppCompatActivity {
     }
 
 
-
-
-
     @Override
     protected void onStop() {
         super.onStop();
-        if(listenerRegistration!=null){
-            listenerRegistration=null;
+        if (listenerRegistration != null) {
+            listenerRegistration = null;
         }
     }
 

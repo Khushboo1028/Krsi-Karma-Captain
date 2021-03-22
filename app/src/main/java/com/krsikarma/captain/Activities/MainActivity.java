@@ -265,7 +265,7 @@ public class MainActivity extends AppCompatActivity {
                         } else if (snapshot.getString(getString(R.string.bank_full_name)) == null) {
                             finishAffinity();
                             Intent intent = new Intent(getApplicationContext(), BankDetailsActivity.class);
-                            intent.putExtra("activity_from", "FromCreateProfile");
+                            intent.putExtra("activity_from", "FromAddDocuments");
                             startActivity(intent);
                         }
 

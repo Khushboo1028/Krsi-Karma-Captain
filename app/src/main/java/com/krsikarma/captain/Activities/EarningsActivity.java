@@ -70,6 +70,8 @@ public class EarningsActivity extends AppCompatActivity {
     ArrayList<Transaction> transactionArrayList;
     TransactionRecyclerAdapter mAdapter;
 
+    Utils utils;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -141,7 +143,12 @@ public class EarningsActivity extends AppCompatActivity {
         btn_transfer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                sendWithdrawRequest();
+                if(double_request_amount != 0.0){
+                    sendWithdrawRequest();
+                }else {
+                    utils.alertDialogOK(EarningsActivity.this,"", getString(R.string.cannot_request_zero));
+                }
+
             }
         });
 
@@ -165,6 +172,7 @@ public class EarningsActivity extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
         firebaseUser = mAuth.getCurrentUser();
 
+        utils = new Utils();
 
     }
 

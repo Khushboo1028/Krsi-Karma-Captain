@@ -152,6 +152,7 @@ public class TransactionRecyclerAdapter extends RecyclerView.Adapter<Transaction
                     @Override
                     public void onSuccess(Void aVoid) {
                         Toast.makeText(mActivity.getApplicationContext(), mActivity.getString(R.string.request_cancelled), Toast.LENGTH_LONG).show();
+
                     }
                 })
                 .addOnFailureListener(new OnFailureListener() {
