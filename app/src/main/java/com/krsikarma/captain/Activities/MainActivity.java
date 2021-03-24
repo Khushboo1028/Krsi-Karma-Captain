@@ -256,8 +256,7 @@ public class MainActivity extends AppCompatActivity {
                             Intent intent = new Intent(getApplicationContext(), AddDocumentsActivity.class);
                             intent.putExtra("activity_from", "FromCreateProfile");
                             startActivity(intent);
-                        }
-                        else if (snapshot.getString(getString(R.string.bank_full_name)) == null) {
+                        } else if (snapshot.getString(getString(R.string.bank_full_name)) == null) {
                             finishAffinity();
                             Intent intent = new Intent(getApplicationContext(), BankDetailsActivity.class);
                             intent.putExtra("activity_from", "FromAddDocuments");
@@ -278,18 +277,17 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    private void getUserData(){
-        if(firebaseUser!=null) {
+    private void getUserData() {
+        if (firebaseUser != null) {
             listenerRegistration = db.collection(getString(R.string.partners)).document(firebaseUser.getUid())
                     .addSnapshotListener(new EventListener<DocumentSnapshot>() {
                         @Override
                         public void onEvent(@Nullable DocumentSnapshot snapshot, @Nullable FirebaseFirestoreException error) {
-                            if(error!=null){
-                                Log.e(TAG,"error: ", error);
+                            if (error != null) {
+                                Log.e(TAG, "error: ", error);
                                 return;
                             }
                             //Check if driver approved
-
 
 
                             //Get driver Lat Long
@@ -306,7 +304,7 @@ public class MainActivity extends AppCompatActivity {
                                 String service_area = snapshot.getString(getString(R.string.user_address));
                                 tv_location.setText(service_area);
 
-                                if(phoneLanguage.equals("hi")){
+                                if (phoneLanguage.equals("hi")) {
                                     utils.translateEnglishToHindi(service_area, tv_location);
                                 }
                             }
@@ -337,11 +335,9 @@ public class MainActivity extends AppCompatActivity {
 
     private void getData() {
 
-
-
         if (is_driver_approved != null && is_driver_approved) {
             listenerRegistration = db.collection(getString(R.string.orders))
-                    .orderBy(getString(R.string.order_date_time), Query.Direction.DESCENDING)
+                    .orderBy(getString(R.string.order_date_time))
                     .whereEqualTo(getString(R.string.order_status), getString(R.string.order_status_type_requested))
                     .addSnapshotListener(new EventListener<QuerySnapshot>() {
                         @Override
@@ -462,7 +458,8 @@ public class MainActivity extends AppCompatActivity {
                                                 float distance = calculateDistanceWithDriver(request_address_lat, request_address_long);
                                                 Log.i(TAG, "distance is " + distance);
 
-                                                if (distance < 100000) {
+                                                if (distance < 100000 ) {
+                                                    Log.i(TAG, "I am in distance if");
                                                     tv_job_requests.setText(getString(R.string.job_requests));
                                                     jobRequestArrayList.add(new JobRequest(
                                                             requester_name,
@@ -483,13 +480,17 @@ public class MainActivity extends AppCompatActivity {
 
                                                     ));
 
-                                                } else {
-                                                    tv_job_requests.setText(getString(R.string.no_requests_in_this_area));
                                                 }
+
+
+
+
                                             }
 
 
                                         }
+
+
 
 
                                     } catch (ParseException parseException) {
@@ -499,6 +500,11 @@ public class MainActivity extends AppCompatActivity {
 
                                 }
 
+
+                            }
+
+                            if (jobRequestArrayList.isEmpty()) {
+                                tv_job_requests.setText(getString(R.string.no_requests_in_this_area));
 
                             }
 
@@ -603,11 +609,12 @@ public class MainActivity extends AppCompatActivity {
                 new_address_longitude = place.getLatLng().longitude;
                 tv_location.setText(new_address);
 
-                if(phoneLanguage.equals("hi")){
+                if (phoneLanguage.equals("hi")) {
                     utils.translateEnglishToHindi(new_address, tv_location);
                 }
-
+//                tv_job_requests.setText(getString(R.string.job_requests));
                 updateServiceLocation();
+                getData();
 
 
                 Geocoder geocoder = new Geocoder(this, Locale.getDefault());
