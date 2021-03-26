@@ -69,6 +69,7 @@ public class OrderDetailsActivity extends AppCompatActivity {
     TextView tv_order_number_text;
     TextView tv_payment_text;
     TextView tv_payment;
+    TextView tv_payment_note;
     ImageView img_user;
     Button btn_cancel;
     Button btn_start;
@@ -343,6 +344,7 @@ public class OrderDetailsActivity extends AppCompatActivity {
         tv_customer_phone = (TextView) findViewById(R.id.tv_customer_phone);
         img_user = (ImageView) findViewById(R.id.img_user);
         btn_cancel = (Button) findViewById(R.id.btn_cancel);
+        tv_payment_note = (TextView) findViewById(R.id.tv_payment_note);
 
         tv_order_number_text = (TextView) findViewById(R.id.tv_order_number_text);
         tv_order_number_text.setVisibility(View.GONE);
@@ -557,10 +559,21 @@ public class OrderDetailsActivity extends AppCompatActivity {
                                         tv_order_number_text.setVisibility(View.VISIBLE);
                                         tv_payment.setVisibility(View.VISIBLE);
                                         tv_payment_text.setVisibility(View.VISIBLE);
+                                        tv_payment_note.setVisibility(View.GONE);
 
                                         if(doc.get(getString(R.string.payment_mode))!=null){
                                             tv_payment.setText(getString(R.string.paid_via) + " " + doc.getString(getString(R.string.payment_mode)));
                                         }
+
+                                        if(doc.get(getString(R.string.razorpay_payment_id))!=null){
+
+                                            String razorpay_payment_id = doc.getString(getString(R.string.razorpay_payment_id));
+                                            if(razorpay_payment_id!=null){
+                                                tv_payment.setText(getString(R.string.paid_via) + " " + doc.getString(getString(R.string.payment_mode)) + "\nRazorpay Ref #" + razorpay_payment_id);
+
+                                            }
+                                        }
+
 
                                     }
 
@@ -737,9 +750,19 @@ public class OrderDetailsActivity extends AppCompatActivity {
                                         tv_order_number_text.setVisibility(View.VISIBLE);
                                         tv_payment.setVisibility(View.VISIBLE);
                                         tv_payment_text.setVisibility(View.VISIBLE);
+                                        tv_payment_note.setVisibility(View.GONE);
 
                                         if(doc.get(getString(R.string.payment_mode))!=null){
                                             tv_payment.setText(getString(R.string.paid_via) + " " + doc.getString(getString(R.string.payment_mode)));
+                                        }
+
+                                        if(doc.get(getString(R.string.razorpay_payment_id))!=null){
+
+                                            String razorpay_payment_id = doc.getString(getString(R.string.razorpay_payment_id));
+                                            if(razorpay_payment_id!=null){
+                                                tv_payment.setText(getString(R.string.paid_via) + " " + doc.getString(getString(R.string.payment_mode)) + "\nRazorpay Ref #" + razorpay_payment_id);
+
+                                            }
                                         }
 
                                     }

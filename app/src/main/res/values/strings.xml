@@ -151,7 +151,7 @@
 
     <string name="get_directions">Get Directions</string>
     <string name="payment">payment</string>
-    <string name="paid_via">Paid via</string>
+    <string name="paid_via">Payment Method: </string>
     <string name="order_completed">Order Completed</string>
     <string name="payment_note">Note: The payment can be done online by the client or you can collect the cash on visit.</string>
 
@@ -199,6 +199,7 @@
     <string name="order_longitude" translatable="false">order_longitude</string>
     <string name="order_postal_code" translatable="false">order_postal_code</string>
     <string name="payment_mode" translatable="false">payment_mode</string>
+    <string name="razorpay_payment_id" translatable="false">razorpay_payment_id</string>
 
 
     <string name="partners" translatable="false">partners</string>

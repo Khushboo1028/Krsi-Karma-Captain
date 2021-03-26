@@ -64,6 +64,7 @@ import com.google.firebase.iid.InstanceIdResult;
 import com.google.firebase.messaging.FirebaseMessaging;
 import com.krsikarma.captain.Adapters.JobRequestsRecyclerAdapter;
 import com.krsikarma.captain.Models.JobRequest;
+import com.krsikarma.captain.Models.ServiceType;
 import com.krsikarma.captain.R;
 import com.krsikarma.captain.Utility.DefaultTextConfig;
 import com.krsikarma.captain.Utility.Utils;
@@ -128,6 +129,7 @@ public class MainActivity extends AppCompatActivity {
     PlacesClient placesClient;
     String places_api_key;
 
+    ArrayList<ServiceType> selectedServicesArrayList;
     Utils utils;
 
     @Override
@@ -261,6 +263,11 @@ public class MainActivity extends AppCompatActivity {
                             Intent intent = new Intent(getApplicationContext(), BankDetailsActivity.class);
                             intent.putExtra("activity_from", "FromAddDocuments");
                             startActivity(intent);
+                        }else {
+                            //driver has logged in and setup account correctly.
+                            //Now check for his services
+
+
                         }
 
 
@@ -321,11 +328,18 @@ public class MainActivity extends AppCompatActivity {
                                         .into(img_user);
                             }
 
+                            if (snapshot.get(getString(R.string.selected_service_type)) != null) {
+                                selectedServicesArrayList = (ArrayList<ServiceType>) snapshot.get(getString(R.string.selected_service_type));
+
+                            }
+
                             if (snapshot.get(getString(R.string.is_driver_approved)) != null) {
 
                                 is_driver_approved = snapshot.getBoolean(getString(R.string.is_driver_approved));
                                 getData();
                             }
+
+
 
                         }
                     });
@@ -458,39 +472,42 @@ public class MainActivity extends AppCompatActivity {
                                                 float distance = calculateDistanceWithDriver(request_address_lat, request_address_long);
                                                 Log.i(TAG, "distance is " + distance);
 
-                                                if (distance < 100000 ) {
-                                                    Log.i(TAG, "I am in distance if");
-                                                    tv_job_requests.setText(getString(R.string.job_requests));
-                                                    jobRequestArrayList.add(new JobRequest(
-                                                            requester_name,
-                                                            requester_quantity,
-                                                            requester_service_id,
-                                                            requester_service_name,
-                                                            requester_postal_code,
-                                                            requester_user_id,
-                                                            request_status,
-                                                            request_address_lat,
-                                                            request_address_long,
-                                                            service_price,
-                                                            requester_acres,
-                                                            requester_address,
-                                                            request_date,
-                                                            request_time,
-                                                            doc.getId()
+                                                if (distance < 7000) {
 
-                                                    ));
+                                                    if (!selectedServicesArrayList.isEmpty()) {
+                                                        tv_job_requests.setText(getString(R.string.job_requests));
 
+                                                        for (int j = 0; j < selectedServicesArrayList.size(); j++) {
+
+                                                            Map<String, ServiceType> map = new HashMap<>();
+                                                            map = (Map<String, ServiceType>) selectedServicesArrayList.get(j);
+
+                                                            if (requester_service_id.equals(map.get("service_id"))) {
+
+                                                                jobRequestArrayList.add(new JobRequest(
+                                                                        requester_name,
+                                                                        requester_quantity,
+                                                                        requester_service_id,
+                                                                        requester_service_name,
+                                                                        requester_postal_code,
+                                                                        requester_user_id,
+                                                                        request_status,
+                                                                        request_address_lat,
+                                                                        request_address_long,
+                                                                        service_price,
+                                                                        requester_acres,
+                                                                        requester_address,
+                                                                        request_date,
+                                                                        request_time,
+                                                                        doc.getId()
+
+                                                                ));
+                                                            }
+                                                        }
+                                                    }
                                                 }
-
-
-
-
                                             }
-
-
                                         }
-
-
 
 
                                     } catch (ParseException parseException) {
