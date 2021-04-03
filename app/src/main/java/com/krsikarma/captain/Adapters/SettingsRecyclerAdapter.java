@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -29,6 +30,7 @@ import com.krsikarma.captain.Activities.BankDetailsActivity;
 import com.krsikarma.captain.Activities.ContactUsActivity;
 import com.krsikarma.captain.Activities.EarningsActivity;
 import com.krsikarma.captain.Activities.GetStartedActivity;
+import com.krsikarma.captain.Activities.PrivacyPolicy;
 import com.krsikarma.captain.Activities.YourOrdersActivity;
 import com.krsikarma.captain.R;
 import com.krsikarma.captain.Utility.Utils;
@@ -72,6 +74,12 @@ public class SettingsRecyclerAdapter extends RecyclerView.Adapter<SettingsRecycl
             holder.tv_settings_name.setTextColor(mActivity.getColor(R.color.brand_color));
         }
 
+        if(position == 2){
+            holder.tv_settings_name.setTextColor(mActivity.getColor(R.color.light_gray));
+            holder.img_arrow.setImageAlpha(66);
+            holder.tv_settings_name.setEnabled(false);
+        }
+
         holder.itemView.setOnClickListener(view -> {
 
             Intent intent;
@@ -89,10 +97,11 @@ public class SettingsRecyclerAdapter extends RecyclerView.Adapter<SettingsRecycl
                     mActivity.startActivity(intent);
                     break;
 
-                case 2:  // Your Earnings
-                    intent = new Intent(mActivity, EarningsActivity.class);
-                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                    mActivity.startActivity(intent);
+                case 2:  // Online Earnings
+
+//                    intent = new Intent(mActivity, EarningsActivity.class);
+//                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+//                    mActivity.startActivity(intent);
                     break;
                 case 3: // Submitted Documents
                     intent = new Intent(mActivity, AddDocumentsActivity.class);
@@ -107,8 +116,16 @@ public class SettingsRecyclerAdapter extends RecyclerView.Adapter<SettingsRecycl
                     mActivity.startActivity(intent);
                     break;
                 case 5: //Privacy Policy
+                    Intent privacy_intent = new Intent(mActivity, PrivacyPolicy.class);
+                    privacy_intent.putExtra("textHeading", mActivity.getString(R.string.privacy_policy));
+                    privacy_intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    mActivity.startActivity(privacy_intent);
                     break;
                 case 6: //Terms of Use
+                    Intent terms_intent = new Intent(mActivity, PrivacyPolicy.class);
+                    terms_intent.putExtra("textHeading", mActivity.getString(R.string.terms_of_use));
+                    terms_intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    mActivity.startActivity(terms_intent);
                     break;
                 case 7: // Contact Us
                     intent = new Intent(mActivity, ContactUsActivity.class);
@@ -183,11 +200,13 @@ public class SettingsRecyclerAdapter extends RecyclerView.Adapter<SettingsRecycl
     public class ViewHolder extends RecyclerView.ViewHolder {
 
         TextView tv_settings_name;
+        ImageView img_arrow;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
 
             tv_settings_name = (TextView) itemView.findViewById(R.id.tv_settings_name);
+            img_arrow = (ImageView) itemView.findViewById(R.id.img_arrow);
         }
     }
 }

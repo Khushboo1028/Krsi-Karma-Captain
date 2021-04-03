@@ -103,7 +103,7 @@
     <string name="install_now">Install Now</string>
     <string name="photo_note">Note: Please upload a clear picture of the document. This will help us to make the verification process easier and faster.</string>
 
-    <string name="your_earnings">Your Earnings</string>
+    <string name="your_earnings">Online Earnings</string>
     <string name="today">Today</string>
     <string name="this_week">This Week</string>
     <string name="this_month">This Month</string>
@@ -123,7 +123,7 @@
     <string name="are_you_sure_end">Are you sure you have completed the service?</string>
     <string name="end_order_note">You have completed the service. Please request the client to proceed with the payment.</string>
 
-    <string name="collect_cash">I am collecting cash</string>
+    <string name="collect_cash">I have collected the cash</string>
     <string name="are_you_sure_collect_cash">Are you sure you have collected the cash?</string>
     <string name="please_let_us_know">Please let us know what happened…</string>
 
@@ -153,7 +153,7 @@
     <string name="payment">payment</string>
     <string name="paid_via">Payment Method: </string>
     <string name="order_completed">Order Completed</string>
-    <string name="payment_note">Note: The payment can be done online by the client or you can collect the cash on visit.</string>
+    <string name="payment_note">Note: The payment must be made in cash by the client once the service is complete.</string>
 
     <string name="you_are_not_approved">You account is not yet verified by the admin. Please be patient.</string>
     <string name="no_requests_in_this_area">Looks like there are no requests in this area. Please try another address.</string>

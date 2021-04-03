@@ -18,9 +18,9 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-
         android:theme="@style/Theme.KrsiKarmaCaptain">
-        <activity android:name=".Activities.ContactUsActivity"></activity>
+        <activity android:name=".Activities.PrivacyPolicy"></activity>
+        <activity android:name=".Activities.ContactUsActivity" />
         <activity android:name=".Activities.RaiseAComplaintActivity" />
         <activity android:name=".Activities.OrderDetailsActivity" />
         <activity android:name=".Activities.AccountActivity" />
@@ -46,13 +46,10 @@
 
         <meta-data
             android:name="com.google.firebase.messaging.default_notification_channel_id"
-            android:value="NOTIF" />
-
-<!--        TODO: change notification icon-->
+            android:value="NOTIF" /> <!-- TODO: change notification icon -->
         <meta-data
             android:name="com.google.firebase.messaging.default_notification_icon"
             android:resource="@drawable/ic_notification" />
-
         <meta-data
             android:name="com.google.firebase.messaging.default_notification_color"
             android:resource="@color/brand_color" />

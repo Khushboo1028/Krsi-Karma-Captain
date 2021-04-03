@@ -101,7 +101,7 @@
     <string name="install_now">अब स्थापित करें</string>
 
 
-    <string name="your_earnings">आपकी कमाई</string>
+    <string name="your_earnings">ऑनलाइन कमाई</string>
     <string name="today">आज</string>
     <string name="this_week">इस सप्ताह</string>
     <string name="this_month">इस महीने</string>
@@ -120,7 +120,7 @@
     <string name="are_you_sure_cancel_withdraw_request">क्या आप वाकई इस अनुरोध को रद्द करना चाहते हैं? इसकी पुष्टि करने पर, अनुरोध की गई राशि को आपके कृति कर्म खाते में वापस जमा कर दिया जाएगा। आप हमेशा बाद में राशि का अनुरोध कर सकते हैं।</string>
     <string name="are_you_sure_end">क्या आप वाकई सेवा पूर्ण कर चुके हैं?</string>
     <string name="end_order_note">आपने सेवा पूरी कर ली है। कृपया ग्राहक से अनुरोध करें कि वह भुगतान के साथ आगे बढ़े।</string>
-    <string name="collect_cash">मैं कैश ले रहा हूं</string>
+    <string name="collect_cash">मैंने नकदी ले ली है</string>
     <string name="are_you_sure_collect_cash">क्या आप सुनिश्चित हैं कि आपने नकदी एकत्र की है?</string>
 
 
@@ -158,7 +158,7 @@
     <string name="paid_via">भुगतान माध्यम:</string>
     <string name="order_completed">आर्डर पूरा हुआ</string>
 
-    <string name="payment_note"> नोट: भुगतान ग्राहक द्वारा ऑनलाइन किया जा सकता है या आप यात्रा पर नकदी एकत्र कर सकते हैं। </string>
+    <string name="payment_note"> नोट: सेवा पूर्ण होते ही ग्राहक द्वारा भुगतान नकद में किया जाना चाहिए।</string>
 
     <string name="you_are_not_approved">आप प्रोफ़ाइल को अभी तक व्यवस्थापक द्वारा सत्यापित नहीं किया गया है। कृपया धैर्य रखें।</string>
     <string name="no_requests_in_this_area"> लगता है कि इस क्षेत्र में कोई अनुरोध नहीं हैं। कृपया दूसरा पता आज़माएं। </string>
